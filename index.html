@@ -1,0 +1,101 @@
+<html>
+
+<head>
+    <title>Weather Dashboard</title>
+    <meta name="description" content="A collection of applications and code passion p3rojects from various stacks">
+    <meta name="keywords" content="weather forecast city search day">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="icon" href="./assets/images/icon.png">
+</head>
+
+<body>
+    <nav>
+        <div class="nav-wrapper orange darken-2">
+            <a href="#" class="brand-logo center">ClairVoyage</a>
+        </div>
+    </nav>
+
+    <div class="row">
+        <div class="col s10 push-s2">
+            <div class="section amber lighten-3" id="today">
+                <img src="http://openweathermap.org/img/wn/10d@2x.png" width="75" height="75">
+                <p>Temp:</p>
+                <p>Wind:</p>
+                <p>Humidity:</p>
+            </div>
+            <div class="divider"></div>
+            <div class="section">
+                <h5>5 Day Forecast</h5>
+                <div class="row">
+                    <div class="col s2">
+                        <div class="card-panel deep-purple lighten-3" id="day">
+                            <img src="http://openweathermap.org/img/wn/10d@2x.png" width="75" height="75">
+                            <p>Temp:</p>
+                            <p>Wind:</p>
+                            <p>Humidity:</p>
+                        </div>
+                    </div>
+                    <div class="col s2">
+                        <div class="card-panel deep-purple lighten-3" id="day">
+                            <img src="http://openweathermap.org/img/wn/10d@2x.png" width="75" height="75">
+                            <p>Temp:</p>
+                            <p>Wind:</p>
+                            <p>Humidity:</p>
+                        </div>
+                    </div>
+                    <div class="col s2">
+                        <div class="card-panel deep-purple lighten-3" id="day">
+                            <img src="http://openweathermap.org/img/wn/10d@2x.png" width="75" height="75">
+                            <p>Temp:</p>
+                            <p>Wind:</p>
+                            <p>Humidity:</p>
+                        </div>
+                    </div>
+                    <div class="col s2">
+                        <div class="card-panel deep-purple lighten-3" id="day">
+                            <img src="http://openweathermap.org/img/wn/10d@2x.png" width="75" height="75">
+                            <p>Temp:</p>
+                            <p>Wind:</p>
+                            <p>Humidity:</p>
+                        </div>
+                    </div>
+                    <div class="col s2">
+                        <div class="card-panel deep-purple lighten-3" id="day">
+                            <img src="http://openweathermap.org/img/wn/10d@2x.png" width="75" height="75">
+                            <p>Temp:</p>
+                            <p>Wind:</p>
+                            <p>Humidity:</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col s2 pull-s10" id="searchbar">
+            <form class="col s12">
+                <div class="row">
+                    <div class="input-field col s12" id="sidebar">
+                        <input placeholder="San Francisco" id="first_name" type="text" class="validate">
+                        <button type="button" id="newsearchbtn">Search</button>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"
+        integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
+        integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U=" crossorigin="anonymous"></script>
+    <script src="./assets/js/script.js"></script>
+</body>
+
+</html>
