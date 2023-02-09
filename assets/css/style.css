@@ -1,0 +1,46 @@
+* {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+body {
+    background-color: rgb(144, 170, 203);
+}
+
+
+
+#searchbar {
+    background-color: rgb(254, 241, 230);
+    height: 100%;
+}
+
+button {
+    transition-duration: 0.4s;
+    border-radius: 4px;
+
+    background-color: lightgrey;
+    border: none;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: cyan
+}
+
+#newsearchbtn {
+    background-color: cyan;
+    transition-duration: 0.2s;
+    font-weight: bold;
+    font-size: 24px;
+    padding: 10px 20px;
+}
+
+#newsearchbtn:hover {
+    background-color: teal;
+    color: white;
+}
