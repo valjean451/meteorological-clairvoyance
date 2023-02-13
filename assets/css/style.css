@@ -2,15 +2,15 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-body {
-    background-color: rgb(144, 170, 203);
-}
-
-
 
 #searchbar {
-    background-color: rgb(254, 241, 230);
+    background-color: white;
     height: 100%;
+}
+
+#today {
+    margin: 20px 0px 0px 10px;
+    padding: 20px;
 }
 
 button {
@@ -44,3 +44,7 @@ button:hover {
     background-color: teal;
     color: white;
 }
+
+/* Dev note - had I had more time to devote to this project, I would have built out the custom CSS significantly. MaterializeCSS has very little in the way of cosmetics.
+
+Also - this page is not set up with media queries. consider building for mobile. */
