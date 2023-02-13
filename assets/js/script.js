@@ -1,32 +1,19 @@
-// Fetch Request
 let weatherKey = "9fcd097a93f060e0de25cf3f15c75b25"
 let todayEl = document.querySelector('#today')
 let fiveDayEl = document.querySelectorAll('#day')
+let searchEl = document.getElementById('first_name')
 
-
-
+// Populate current and future dates on load, as well as the search history.
 $(document).ready(function () {
     loadBtns()
     loadDates()
 })
-//todo: search button click event, run get coords for input value, then populate main elements with forecast data
-//todo: sidebar button click event, populate main elements with forecast data for clicked button's city
 
+// Search event
+$('#newsearchbtn').on('click', function(){
+    getCoords(searchEl.value)
+})
 
-
-
-
-
-
-// **on search**
-// user searches for a city by name
-// store a localstorage object with the city's name, longitude, and latitude
-// create a button in the sidebar that is tied to the localstorage object
-// search for weather information by coordinates
-// populate main elements with weather information
-
-
-//add an event listener for click of search button
 function getCoords(city) {
     fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${weatherKey}`)
         .then(Response => Response.json())
@@ -46,12 +33,14 @@ function getCoords(city) {
         });
 }
 
+// Weather data call
 function getWeather(lat, lon) {
     fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=${weatherKey}`)
         .then(Response => Response.json())
         .then(function (data) {
             console.log(data)
             let weatherToday = {
+                todayName: data.city.name,
                 todayTemp: data.list[0].main.temp,
                 todayWind: data.list[0].wind.speed,
                 todayHumid: data.list[0].main.humidity,
@@ -90,38 +79,41 @@ function getWeather(lat, lon) {
                     icon: data.list[39].weather[0].icon
                 }
             ]
-            todayEl.children[1].setAttribute("src", `http://openweathermap.org/img/wn/${weatherToday.todayIcon}@2x.png`)
-            todayEl.children[2].innerText = `Temp: ${weatherToday.todayTemp} F`
-            todayEl.children[3].innerText = `Wind: ${weatherToday.todayWind} mph`
-            todayEl.children[4].innerText = `Humidity: ${weatherToday.todayHumid}%`
+            todayEl.children[1].innerText = `Weather for ${weatherToday.todayName}`
+            todayEl.children[2].setAttribute("src", `http://openweathermap.org/img/wn/${weatherToday.todayIcon}@2x.png`)
+            todayEl.children[3].innerText = `Temp: ${weatherToday.todayTemp} F`
+            todayEl.children[4].innerText = `Wind: ${weatherToday.todayWind} mph`
+            todayEl.children[5].innerText = `Humidity: ${weatherToday.todayHumid}%`
 
             for (let i = 0; i < fiveDayEl.length; i++) {
                 fiveDayEl[i].children[1].setAttribute("src", `http://openweathermap.org/img/wn/${weatherForecast[i].icon}@2x.png`)
                 fiveDayEl[i].children[2].innerText = `Temp: ${weatherForecast[i].temp} F`
                 fiveDayEl[i].children[3].innerText = `Wind: ${weatherForecast[i].wind} mph`
                 fiveDayEl[i].children[4].innerText = `Humidity: ${weatherForecast[i].humid}%`
-            }
+}})}
 
-        })
-}
-
-getWeather(40.88, -111.88)
-
-
-
-// **on click sidebar button**
-// clear main elements
-// use linked ls object to search for weather by coords
-// populate main elements with clicked city's weather info
-
-
-
+// Generate sidebar buttons
 function generateBtn(i) {
     var sidebarEl = document.querySelector('#sidebar')
     var btn = document.createElement("button")
     btn.innerText = i
     btn.setAttribute('type', 'button')
-    btn.setAttribute('id', 'sidebarBtn')
+    btn.setAttribute('class', 'sidebarbtn')
+    btn.setAttribute('id', i)
+    $(btn).on("click", function () {
+        let searchHistory = JSON.parse(localStorage.getItem("cityHistory"))
+        console.log(searchHistory)
+        let histLon = 0
+        let histLat = 0
+        for (let i = 0; i < searchHistory.length; i++) {
+            if (searchHistory[i].cityName == $(btn).attr('id')){
+                histLon = searchHistory[i].lon
+                histLat = searchHistory[i].lat
+            }}
+            console.log(histLat, histLon)
+            console.log($(this).attr('id'))
+            getWeather(histLat, histLon)
+    })
     sidebarEl.append(btn)
 }
 
@@ -133,9 +125,10 @@ function loadBtns() {
     }
 }
 
+// Generate dates
 function loadDates() {
-    let today = dayjs().format('MM/DD/YYYY')
-    let todayH = document.createElement('h5')
+    let today = dayjs().format('dddd, MMMM DD')
+    let todayH = document.createElement('h2')
     todayH.innerText = today
     todayEl.prepend(todayH)
     for (let i = 0; i < fiveDayEl.length; i++) {
@@ -146,4 +139,8 @@ function loadDates() {
     }
 }
 
-
+// Ways to improve:
+// 1a. Rework the API calls to align to the right dates and times. The 5 day call actually begins 8 hours in the future, I learned, and so to populate the 'today' data, I should have been using a third call.
+// 1b. Rework searches to better find the city you are looking for, either by validating inputs, or returning more responses and cross-checking, or asking for more data.
+// 2. Use a constructor function to build the search object, and then append the created object to the LS entry.
+// 3. Optimize the search event for forms, rather than being on element click.

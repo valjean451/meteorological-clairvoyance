@@ -14,16 +14,17 @@
     <link rel="icon" href="./assets/images/icon.png">
 </head>
 
-<body>
+<body class="light-blue lighten-3">
     <nav>
-        <div class="nav-wrapper orange darken-2">
+        <div class="nav-wrapper deep-orange lighten-2">
             <a href="#" class="brand-logo center">ClairVoyage</a>
         </div>
     </nav>
 
     <div class="row">
         <div class="col s10 push-s2">
-            <div class="section amber lighten-3" id="today">
+            <div class="section amber lighten-5" id="today">
+                <h3>City</h3>
                 <img src="http://openweathermap.org/img/wn/10d@2x.png" width="75" height="75">
                 <p>Temp:</p>
                 <p>Wind:</p>
@@ -34,7 +35,7 @@
                 <h5>5 Day Forecast</h5>
                 <div class="row">
                     <div class="col s2">
-                        <div class="card-panel deep-purple lighten-3" id="day">
+                        <div class="card-panel amber lighten-5" id="day">
                             <img src="http://openweathermap.org/img/wn/10d@2x.png" width="75" height="75">
                             <p>Temp:</p>
                             <p>Wind:</p>
@@ -42,7 +43,7 @@
                         </div>
                     </div>
                     <div class="col s2">
-                        <div class="card-panel deep-purple lighten-3" id="day">
+                        <div class="card-panel amber lighten-5" id="day">
                             <img src="http://openweathermap.org/img/wn/10d@2x.png" width="75" height="75">
                             <p>Temp:</p>
                             <p>Wind:</p>
@@ -50,7 +51,7 @@
                         </div>
                     </div>
                     <div class="col s2">
-                        <div class="card-panel deep-purple lighten-3" id="day">
+                        <div class="card-panel amber lighten-5" id="day">
                             <img src="http://openweathermap.org/img/wn/10d@2x.png" width="75" height="75">
                             <p>Temp:</p>
                             <p>Wind:</p>
@@ -58,7 +59,7 @@
                         </div>
                     </div>
                     <div class="col s2">
-                        <div class="card-panel deep-purple lighten-3" id="day">
+                        <div class="card-panel amber lighten-5" id="day">
                             <img src="http://openweathermap.org/img/wn/10d@2x.png" width="75" height="75">
                             <p>Temp:</p>
                             <p>Wind:</p>
@@ -66,7 +67,7 @@
                         </div>
                     </div>
                     <div class="col s2">
-                        <div class="card-panel deep-purple lighten-3" id="day">
+                        <div class="card-panel amber lighten-5" id="day">
                             <img src="http://openweathermap.org/img/wn/10d@2x.png" width="75" height="75">
                             <p>Temp:</p>
                             <p>Wind:</p>
@@ -99,3 +100,8 @@
 </body>
 
 </html>
+
+<!-- ways to improve:
+1. Google fonts. 
+2. work on dynamically generating elements, rather than building a structure like this in the HTML (in this case, I think it's fine, as this page doesn't need to scale, but in other applications it would be necessary to generate large numbers of elements and position them)
+-->
